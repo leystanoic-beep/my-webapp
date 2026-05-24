@@ -1,34 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes & Lists</title>
+  <title>WriteSpace</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>📝 Notes & Lists</h1>
+  <!-- SIDEBAR -->
+  <div id="sidebar-overlay" onclick="closeSidebar()"></div>
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <h2>Previous Entries</h2>
+      <button onclick="closeSidebar()">✕</button>
+    </div>
+    <div id="entries-list"></div>
+  </div>
+
+  <header>
+    <h1>✍️ WriteSpace</h1>
+    <p class="subtitle">A space to reflect, grow and create</p>
+    <button class="entries-btn" onclick="openSidebar()">📖 My Entries</button>
+  </header>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('notes')">Notes</button>
-    <button class="tab" onclick="showTab('lists')">Lists</button>
+    <button class="tab active" onclick="showTab('reflection')">Self Reflection</button>
+    <button class="tab" onclick="showTab('productivity')">Productivity & Growth</button>
+    <button class="tab" onclick="showTab('vision')">Vision & Goals</button>
   </div>
 
-  <!-- NOTES SECTION -->
-  <div id="notes" class="section">
-    <input type="text" id="note-title" placeholder="Note title..." />
-    <textarea id="note-body" placeholder="Write your note..."></textarea>
-    <button onclick="addNote()">Add Note</button>
-    <div id="notes-container"></div>
+  <div class="prompt-box">
+    <p id="prompt-text"></p>
+    <div class="prompt-actions">
+      <button onclick="prevPrompt()">← Prev</button>
+      <span id="prompt-counter"></span>
+      <button onclick="nextPrompt()">Next →</button>
+    </div>
   </div>
 
-  <!-- LISTS SECTION -->
-  <div id="lists" class="section hidden">
-    <input type="text" id="list-item" placeholder="Add a list item..." />
-    <button onclick="addListItem()">Add Item</button>
-    <div id="lists-container"></div>
+  <div class="write-box">
+    <textarea id="writing-area" placeholder="Start writing here..."></textarea>
+    <div class="write-actions">
+      <span id="save-status"></span>
+      <button onclick="clearWriting()">Clear</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

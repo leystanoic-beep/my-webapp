@@ -1,132 +1,145 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f0f2f5;
-  color: #333;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
-}
-
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.tab {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #ddd;
-  font-size: 1rem;
+/* ENTRIES BUTTON */
+.entries-btn {
+  margin-top: 15px;
+  background: transparent;
+  border: 1.5px solid #c8956c;
+  color: #c8956c;
+  padding: 8px 22px;
+  border-radius: 50px;
   cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-.tab.active {
-  background: #4a90e2;
+.entries-btn:hover {
+  background: #c8956c;
   color: white;
 }
 
-.section {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.hidden {
+/* SIDEBAR OVERLAY */
+#sidebar-overlay {
   display: none;
-}
-
-input[type="text"], textarea {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
+  height: 100%;
+  background: rgba(58, 50, 38, 0.4);
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
 }
 
-textarea {
-  height: 100px;
-  resize: vertical;
+/* SIDEBAR */
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100%;
+  background: #fffdf7;
+  box-shadow: -4px 0 24px rgba(58, 50, 38, 0.15);
+  z-index: 200;
+  transition: right 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-button {
-  padding: 10px 20px;
-  background: #4a90e2;
-  color: white;
+#sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 25px 20px;
+  border-bottom: 1px solid #e8e0d0;
+  background: #f5f0e8;
+}
+
+.sidebar-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #3a3226;
+}
+
+.sidebar-header button {
+  background: transparent;
   border: none;
-  border-radius: 8px;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-button:hover {
-  background: #357abd;
-}
-
-.note-card {
-  background: #fffde7;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.note-card h3 {
-  margin-bottom: 8px;
-  color: #555;
-}
-
-.delete-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #e74c3c;
-  padding: 5px 10px;
-  font-size: 0.8rem;
+  color: #9c8b78;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
   margin: 0;
 }
 
-.delete-btn:hover {
-  background: #c0392b;
+.sidebar-header button:hover {
+  background: #ede6d9;
+  color: #3a3226;
 }
 
-.list-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+/* ENTRIES LIST */
+#entries-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 20px;
 }
 
-.list-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+.entry-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 1px solid #e8e0d0;
+  border-left: 4px solid #c8956c;
+  transition: box-shadow 0.2s ease;
   cursor: pointer;
 }
 
-.list-item span {
-  flex: 1;
-  font-size: 1rem;
+.entry-card:hover {
+  box-shadow: 0 4px 16px rgba(58, 50, 38, 0.1);
 }
 
-.list-item span.checked {
-  text-decoration: line-through;
-  color: #aaa;
+.entry-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c8956c;
+  margin-bottom: 6px;
+}
+
+.entry-prompt {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: #3a3226;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.entry-date {
+  font-size: 0.78rem;
+  color: #b5a898;
+  font-style: italic;
+}
+
+.no-entries {
+  text-align: center;
+  color: #b5a898;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  margin-top: 60px;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
